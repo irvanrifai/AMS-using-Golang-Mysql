@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .container{
+            max-width: 700px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+        <h3>Add data attendance</h3>
+        <form action="/attendance/add" method="post">
+            <div class="form-group mb-2">
+                <label for="">Name</label>
+                <input type="text" name="name" value="{{ .employee.Name }}" class="form-control {{ if .validation.Name }} is-invalid {{ end }}" id="">
+                <div class="invalid-feedback">
+                    {{ .validation.Name }}
+                </div>
+            </div>
+            <div class="form-group my-2">
+                <label for="">Address</label>
+                <textarea name="address" class="form-control {{ if .validation.Address }} is-invalid {{ end }}" id="">{{ .employee.Address }}</textarea>
+                <div class="invalid-feedback">
+                    {{ .validation.Address }}
+                </div>
+            </div>
+            <div class="form-group my-2">
+                <label for="">Position</label>
+                <select class="form-control {{ if .validation.Position }} is-invalid {{ end }}" name="position" id="">
+                    <option value="" disabled selected>Select</option>
+                    <option {{ if eq .employee.Position `Software Engineer` }} selected {{ end }} value="Software Engineer">Software Engineer</option>
+                    <option {{ if eq .employee.Position `Frontend Developer` }} selected {{ end }} value="Frontend Developer">Frontend Developer</option>
+                    <option {{ if eq .employee.Position `Backend Developer` }} selected {{ end }} value="Backend Developer">Backend Developer</option>
+                    <option {{ if eq .employee.Position `Mobile Developer` }} selected {{ end }} value="Mobile Developer">Mobile Developer</option>
+                    <option {{ if eq .employee.Position `Project Manager` }} selected {{ end }} value="Project Manager">Project Manager</option>
+                </select>
+                <div class="invalid-feedback">
+                    {{ .validation.Position }}
+                </div>
+            </div>
+            <div class="form-group my-2">
+                <label for="">Company</label>
+                <select class="form-control {{ if .validation.Company }} is-invalid {{ end }}" name="company" id="">
+                    <option value="" disabled selected>Select</option>
+                    <option {{ if eq .employee.Company `nothing` }} selected {{ end }} value="nothing">Nothing</option>
+                    <option {{ if eq .employee.Company `tokopedia` }} selected {{ end }} value="tokopedia">Tokopedia</option>
+                    <option {{ if eq .employee.Company `bukalapak` }} selected {{ end }} value="bukalapak">Bukalapak</option>
+                    <option {{ if eq .employee.Company `shopee` }} selected {{ end }} value="shopee">Shopee</option>
+                </select>
+                <div class="invalid-feedback">
+                    {{ .validation.Company }}
+                </div>
+            </div>
+            <div class="form-group my-2">
+                <label for="">Gender</label>
+                <select class="form-control {{ if .validation.Gender }} is-invalid {{ end }}" name="gender" id="">
+                    <option value="" disabled selected>Select</option>
+                    <option {{ if eq .employee.Gender `1` }} selected {{ end }} value="1">Male</option>
+                    <option {{ if eq .employee.Gender `2` }} selected {{ end }} value="2">Female</option>
+                </select>
+                <div class="invalid-feedback">
+                    {{ .validation.Gender }}
+                </div>
+            </div>
+            <div class="form-group my-2">
+                <label for="">Employee Number</label>
+                <input type="number" name="employee_number" value="{{ .employee.EmployeeNumber }}" class="form-control {{ if .validation.EmployeeNumber }} is-invalid {{ end }}" id="">
+                <div class="invalid-feedback">
+                    {{ .validation.EmployeeNumber }}
+                </div>
+            </div>
+            <div class="form-group my-2">
+                <label for="">Presence In</label>
+                <input type="datetime-local" name="presence_in" value="{{ .employee.PresenceIn }}" class="form-control {{ if .validation.PresenceIn }} is-invalid {{ end }}" id="">
+                <div class="invalid-feedback">
+                    {{ .validation.PresenceIn }}
+                </div>
+            </div>
+            <div class="form-group my-2">
+                <label for="">Presence Out</label>
+                <input type="datetime-local" name="presence_out" value="{{ .employee.PresenceOut }}" class="form-control {{ if .validation.PresenceOut }} is-invalid {{ end }}" id="">
+                <div class="invalid-feedback">
+                    {{ .validation.PresenceOut }}
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+  </body>
+</html>
