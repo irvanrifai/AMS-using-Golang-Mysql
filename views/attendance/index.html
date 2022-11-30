@@ -35,18 +35,18 @@
                 </tr>
             </thead>
             <tbody>
-              {{ range .employee }}
+              {{ range $number, $value := .employee }}
                 <tr>
-                    <td>{{ .Id }}</td>
-                    <td>{{ .Name }}</td>
-                    <td>{{ .EmployeeNumber }}</td>
-                    <td>{{ .Position }}</td>
-                    <td>{{ .PresenceIn }}</td>
-                    <td>{{ .PresenceOut }}</td>
+                    <td>{{ $number }}</td>
+                    <td>{{ $value.Name }}</td>
+                    <td>{{ $value.EmployeeNumber }}</td>
+                    <td>{{ $value.Position }}</td>
+                    <td>{{ $value.PresenceIn }}</td>
+                    <td>{{ $value.PresenceOut }}</td>
                     <td>
                         <div class="col">
-                            <a href="/attendance/edit?id={{ .Id }}" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="/attendance/delete?id={{ .Id }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="/attendance/edit?id={{ $value.Id }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="/attendance/delete?id={{ $value.Id }}" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-danger">Delete</a>
                         </div>
                     </td>
                 </tr>
