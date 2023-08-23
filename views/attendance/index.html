@@ -1,31 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AMS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="container mt-4">
         <h3>Attendance Management System</h3>
         <hr>
         <div class="row">
-          <div class="col-6">
-            <a href="/attendance/add" class="my-2 btn btn-sm btn-primary">Add</a>
-          </div>
-          <div class="col-4">
-            {{ if .message }}
-            <div class="alert alert-success fade show" role="alert">
-              <strong>{{ .message }}</strong>
+            <div class="col-6">
+                <a href="/attendance/add" class="my-2 btn btn-sm btn-primary">Add</a>
             </div>
-            {{ end }}
-          </div>
+            <div class="col-4">
+                {{ if .message }}
+                <div class="alert alert-success fade show" role="alert">
+                    <strong>{{ .message }}</strong>
+                </div>
+                {{ end }}
+            </div>
         </div>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>No</th>
                     <th>Name</th>
                     <th>Employee Number</th>
                     <th>Position</th>
@@ -35,9 +36,8 @@
                 </tr>
             </thead>
             <tbody>
-              {{ range $number, $value := .employee }}
+                {{ range $value := .employee }}
                 <tr>
-                    <td>{{ $number }}</td>
                     <td>{{ $value.Name }}</td>
                     <td>{{ $value.EmployeeNumber }}</td>
                     <td>{{ $value.Position }}</td>
@@ -50,9 +50,10 @@
                         </div>
                     </td>
                 </tr>
-              {{ end }}
+                {{ end }}
             </tbody>
         </table>
     </div>
-  </body>
+</body>
+
 </html>
