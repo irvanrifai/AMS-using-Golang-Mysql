@@ -65,8 +65,8 @@ func Add(response http.ResponseWriter, request *http.Request) {
 			data["employee"] = datasemployee
 
             // with message
-			temp, _ := template.ParseFiles("views/attendance/index.html")
-			temp.Execute(response, data)
+			// temp, _ := template.ParseFiles("views/attendance/index.html")
+			// temp.Execute(response, data)
             
             // without message
             http.Redirect(response, request, "/", http.StatusSeeOther)
